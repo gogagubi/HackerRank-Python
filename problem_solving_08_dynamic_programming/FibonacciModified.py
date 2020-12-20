@@ -1,22 +1,12 @@
-numMap = {}
-
-
 def fibonacciModified(t1, t2, n):
-    if n == 1:
-        return t1
-    if n == 2:
-        return t2
+    dp = [0] * n
+    dp[0] = t1
+    dp[1] = t2
 
-    if n in numMap:
-        return numMap[n]
+    for i in range(2, n):
+        dp[i] = dp[i - 2] + dp[i - 1] * dp[i - 1]
 
-    l = fibonacciModified(t1, t2, n - 2)
-    r = fibonacciModified(t1, t2, n - 1)
-    r = r * r
-
-    res = l + r
-    numMap[n] = res
-    return res
+    return dp[n - 1]
 
 
 if True:
