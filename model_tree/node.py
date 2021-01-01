@@ -20,15 +20,18 @@ class Node:
 
                 node = queue.pop(0)
                 if node is not None:
-                    leftValue = values.pop(0)
-                    if leftValue is not None:
-                        node.left = Node(leftValue)
-                        queue.append(node.left)
 
-                    rightValue = values.pop(0)
-                    if rightValue is not None:
-                        node.right = Node(rightValue)
-                        queue.append(node.right)
+                    if len(values) > 0:
+                        leftValue = values.pop(0)
+                        if leftValue is not None:
+                            node.left = Node(leftValue)
+                            queue.append(node.left)
+
+                    if len(values) > 0:
+                        rightValue = values.pop(0)
+                        if rightValue is not None:
+                            node.right = Node(rightValue)
+                            queue.append(node.right)
 
     def showTree(self):
         result = []
