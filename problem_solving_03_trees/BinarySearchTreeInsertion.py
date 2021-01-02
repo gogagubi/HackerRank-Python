@@ -29,3 +29,4 @@ if True:
 
     result = insert(root, data)
     print("Result ", result.showFlatTree())
+
