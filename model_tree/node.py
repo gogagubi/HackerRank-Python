@@ -1,6 +1,6 @@
 class Node:
     def __init__(self, *arr):
-        self.data = 0
+        self.info = 0
         self.left = None
         self.right = None
 
@@ -9,7 +9,7 @@ class Node:
             values.append(i)
 
         queue = []
-        self.data = values.pop(0)
+        self.info = values.pop(0)
         queue.append(self)
 
         while len(values) > 0:
@@ -46,7 +46,7 @@ class Node:
 
             for i in range(0, size):
                 current = queue.pop(0)
-                innerList.append(current.data)
+                innerList.append(current.info)
 
                 if current.left is not None:
                     queue.append(current.left)
@@ -70,7 +70,7 @@ class Node:
                 current = queue.pop(0)
 
                 if current is not None:
-                    result.append(current.data)
+                    result.append(current.info)
 
                     queue.append(current.left)
                     queue.append(current.right)

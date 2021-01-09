@@ -1,6 +1,6 @@
-class TreeNode:
+class Node:
     def __init__(self, *arr):
-        self.val = 0
+        self.data = 0
         self.left = None
         self.right = None
 
@@ -9,7 +9,7 @@ class TreeNode:
             values.append(i)
 
         queue = []
-        self.val = values.pop(0)
+        self.data = values.pop(0)
         queue.append(self)
 
         while len(values) > 0:
@@ -20,15 +20,18 @@ class TreeNode:
 
                 node = queue.pop(0)
                 if node is not None:
-                    leftValue = values.pop(0)
-                    if leftValue is not None:
-                        node.left = TreeNode(leftValue)
-                        queue.append(node.left)
 
-                    rightValue = values.pop(0)
-                    if rightValue is not None:
-                        node.right = TreeNode(rightValue)
-                        queue.append(node.right)
+                    if len(values) > 0:
+                        leftValue = values.pop(0)
+                        if leftValue is not None:
+                            node.left = Node(leftValue)
+                            queue.append(node.left)
+
+                    if len(values) > 0:
+                        rightValue = values.pop(0)
+                        if rightValue is not None:
+                            node.right = Node(rightValue)
+                            queue.append(node.right)
 
     def showTree(self):
         result = []
@@ -43,7 +46,7 @@ class TreeNode:
 
             for i in range(0, size):
                 current = queue.pop(0)
-                innerList.append(current.val)
+                innerList.append(current.info)
 
                 if current.left is not None:
                     queue.append(current.left)
@@ -67,7 +70,7 @@ class TreeNode:
                 current = queue.pop(0)
 
                 if current is not None:
-                    result.append(current.val)
+                    result.append(current.info)
 
                     queue.append(current.left)
                     queue.append(current.right)
@@ -75,8 +78,8 @@ class TreeNode:
                     result.append("None")
 
         lastNone = -1
-        for k, val in enumerate(result):
-            if val == 'None':
+        for k, data in enumerate(result):
+            if data == 'None':
                 if lastNone == -1:
                     lastNone = k
             else:

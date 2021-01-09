@@ -7,7 +7,7 @@ def insert(root, val):
 
     curr = root
     while curr:
-        if val < curr.data:
+        if val < curr.info:
             if curr.left:
                 curr = curr.left
             else:

@@ -12,7 +12,7 @@ def decodeHuff(root, s):
             curr = curr.right
 
         if not curr.left and not curr.right:
-            ans += curr.data
+            ans += curr.info
             curr = root
 
     return ans

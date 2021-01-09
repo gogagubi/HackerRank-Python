@@ -2,10 +2,10 @@ from model_tree.node import Node
 
 
 def lca(root, v1, v2):
-    if root.info > max(v1, v2):
-        return lca(root.left, v1, v2)
-    elif root.info < min(v1, v2):
+    if root.info < min(v1, v2):
         return lca(root.right, v1, v2)
+    elif root.info > max(v1, v2):
+        return lca(root.left, v1, v2)
     else:
         return root
 

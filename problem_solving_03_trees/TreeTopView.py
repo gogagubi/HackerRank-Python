@@ -14,7 +14,7 @@ def topView(root):
             level = curr[1]
 
             if level not in map:
-                map[level] = node.data
+                map[level] = node.info
 
             if node.left:
                 queue.append((node.left, level - 1))

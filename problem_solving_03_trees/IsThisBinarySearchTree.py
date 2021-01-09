@@ -11,10 +11,10 @@ def dfs(node, minval, maxval):
     if node is None:
         return True
 
-    if node.data < minval or node.data > maxval:
+    if node.info < minval or node.info > maxval:
         return False
 
-    return dfs(node.left, minval, node.data - 1) and dfs(node.right, node.data + 1, maxval)
+    return dfs(node.left, minval, node.info - 1) and dfs(node.right, node.info + 1, maxval)
 
 
 if True:
