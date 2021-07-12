@@ -3,27 +3,35 @@ import sys
 
 
 def minimumPasses(m, w, p, n):
+    passes = 0
     candy = 0
-    invest = 0
     spend = sys.maxsize
 
     while candy < n:
-        passes = (p - candy) // (m * w)
-        if passes <= 0:
-            mw = (candy // p) + m + w
-            half = math.ceil(mw / 2)
+        step = (p - candy) // (m * w)
+        if step <= 0:
+            resources = candy // p
+
+            gap = min(resources, abs(m - w))
+            resources -= gap
+
             if m > w:
-                m = max(m, half)
-                w = mw - m
+                w += gap
             else:
-                w = max(w, half)
-                m = mw - w
+                m += gap
+
+            m += resources // 2
+            w += (resources - (resources // 2))
+
             candy %= p
-            passes = 1
-        candy += passes * m * w
-        invest += passes
-        spend = min(spend, invest + math.ceil((n - candy) / (m * w)))
-    return min(invest, spend)
+            step = 1
+
+        passes += step
+
+        candy += step * m * w
+        spend = min(spend, (passes + math.ceil((n - candy) / (m * w))))
+
+    return min(passes, spend)
 
 
 if True:
