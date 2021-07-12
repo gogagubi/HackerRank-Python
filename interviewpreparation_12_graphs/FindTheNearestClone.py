@@ -1,5 +1,6 @@
 def findShortest(graph_nodes, graph_from, graph_to, ids, val):
-    #Not implemented yet
+    # Not implemented yet
+    # do something
     pass
 
 
